@@ -1,25 +1,14 @@
-import logo from "./logo.svg";
-import "./App.css";
+import AppHeader from "./components/AppHeader";
+import Hero from "./components/Hero";
 import useMovies from "./hooks/useMovies";
 
 function App() {
-  const { movies } = useMovies();
+  const { movies, searchMovies } = useMovies();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AppHeader></AppHeader>
+      <Hero onSearch={searchMovies} />
     </div>
   );
 }
