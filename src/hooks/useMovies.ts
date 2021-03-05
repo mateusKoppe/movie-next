@@ -15,6 +15,11 @@ const useMovies = () => {
   };
 
   const searchMovies = async (query: string) => {
+    if (!query) {
+      loadMovies();
+      return;
+    }
+
     const response = await Api.get("/search/movie", {
       params: { api_key: API_KEY, query },
     });

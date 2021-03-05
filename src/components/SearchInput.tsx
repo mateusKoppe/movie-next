@@ -48,7 +48,6 @@ const SearchInput: FunctionComponent<SearchInputProps> = ({ onSearch }) => {
     <Form onSubmit={handleSubmit}>
       <Input
         name="search"
-        required
         placeholder="Search for a movie..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
