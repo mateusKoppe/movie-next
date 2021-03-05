@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   align-items: center;
   color: white;
   flex-direction: column;
+  margin-bottom: 2rem;
 
   &::before {
     content: "";
