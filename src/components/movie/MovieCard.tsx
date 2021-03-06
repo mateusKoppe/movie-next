@@ -1,7 +1,8 @@
 import dayjs from "dayjs";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import styled from "styled-components";
-import Movie from "../types/Movie";
+import Movie from "../../types/Movie";
+import MovieDetailModal from "./MovieDetailModal";
 
 interface MovieCardProps {
   movie: Movie;
@@ -45,21 +46,30 @@ const Cover = styled.img`
 `;
 
 const getYear = (date: string) => {
-  return dayjs(date).format("YYYY")
-}
+  return dayjs(date).format("YYYY");
+};
 
 const MovieCard: FunctionComponent<MovieCardProps> = ({ movie }) => {
+  const [isOpened, setIsOpened] = useState(false);
+
   return (
-    <Wrapper>
-      <Cover
-        src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`}
-        alt={movie.title}
+    <>
+      <Wrapper>
+        <Cover
+          src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`}
+          alt={movie.title}
+        />
+        <Content onClick={() => setIsOpened(true)}>
+          <span>{getYear(movie.release_date)}</span>
+          <h2>{movie.title}</h2>
+        </Content>
+      </Wrapper>
+      <MovieDetailModal
+        movie={movie}
+        visible={isOpened}
+        onClose={() => setIsOpened(false)}
       />
-      <Content>
-        <span>{getYear(movie.release_date)}</span>
-        <h2>{movie.title}</h2>
-      </Content>
-    </Wrapper>
+    </>
   );
 };
 

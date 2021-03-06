@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
-import Movie from "../types/Movie";
+import Movie from "../../types/Movie";
 import MovieCard from "./MovieCard";
 
 interface MoviesGridProps {

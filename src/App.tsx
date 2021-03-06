@@ -1,7 +1,7 @@
 import AppHeader from "./components/AppHeader";
 import RatingFilter from "./components/RatingFilter";
 import Hero from "./components/Hero";
-import MoviesGrid from "./components/MoviesGrid";
+import MoviesGrid from "./components/movie/MoviesGrid";
 import useMovies from "./hooks/useMovies";
 
 function App() {
