@@ -2,11 +2,12 @@ import { FunctionComponent } from "react";
 import { range } from "lodash";
 
 import dayjs from "dayjs";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Movie from "../../types/Movie";
 import Modal, { CloseButton } from "../Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { coverSize, getMovieImage } from "../../lib/moviesHelper";
 
 interface MovieDetailModalProps {
   movie: Movie;
@@ -31,11 +32,15 @@ const Stars = styled.div`
   font-size: 1.85rem;
 `;
 
-const StyledModal = styled(Modal)<{ backdrop: string }>`
+const StyledModal = styled(Modal)<{ backdrop?: string }>`
   &,
   ${CloseButton} {
-    color: white;
-    text-shadow: 0 .1em 0.7em black;
+    ${({ backdrop }) =>
+      backdrop &&
+      css`
+        color: white;
+        text-shadow: 0 0.1em 0.7em black;
+      `}
   }
 
   p {
@@ -50,11 +55,16 @@ const StyledModal = styled(Modal)<{ backdrop: string }>`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(${({ backdrop }) => backdrop});
     background-size: cover;
     background-position: center;
     filter: brightness(40%) contrast(80%);
     z-index: -1;
+
+    ${({ backdrop }) =>
+      backdrop &&
+      css`
+        background-image: url(${backdrop});
+      `}
   }
 `;
 
@@ -67,7 +77,7 @@ const MovieDetailModal: FunctionComponent<MovieDetailModalProps> = ({
 
   return (
     <StyledModal
-      backdrop={`https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${movie.backdrop_path}`}
+      backdrop={movie.backdrop_path && getMovieImage(movie.backdrop_path, coverSize.backdrop)}
       title="Movie Details"
       visible={visible}
       onClose={onClose}
@@ -76,7 +86,7 @@ const MovieDetailModal: FunctionComponent<MovieDetailModalProps> = ({
       <Wrapper>
         <div>
           <Cover
-            src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${movie.poster_path}`}
+            src={getMovieImage(movie.poster_path, coverSize.medium)}
             alt={movie.title}
             width="100%"
           />

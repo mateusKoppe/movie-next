@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { FunctionComponent, useState } from "react";
 import styled from "styled-components";
+import { getMovieImage } from "../../lib/moviesHelper";
 import Movie from "../../types/Movie";
 import MovieDetailModal from "./MovieDetailModal";
 
@@ -56,7 +57,7 @@ const MovieCard: FunctionComponent<MovieCardProps> = ({ movie }) => {
     <>
       <Wrapper>
         <Cover
-          src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`}
+          src={getMovieImage(movie.poster_path)}
           alt={movie.title}
         />
         <Content onClick={() => setIsOpened(true)}>
