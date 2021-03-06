@@ -20,7 +20,7 @@ interface ModalStyleProps {
 
 const Wrapper = styled.div<ModalStyleProps>`
   position: fixed;
-  z-index: ${({ visible, isClosing }) => (visible && !isClosing ? 100 : -100)};
+  z-index: ${({ visible, isClosing }) => (visible && !isClosing ? 300 : -100)};
 
   transition: all ease ${TRANSITION}s;
 `;

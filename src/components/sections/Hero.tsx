@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
-import SearchInput from "./SearchInput";
+import SearchInput from "../SearchInput";
 
 const Wrapper = styled.div`
   position: relative;

@@ -1,6 +1,6 @@
-import AppHeader from "./components/AppHeader";
+import AppHeader from "./components/layout/AppHeader";
 import RatingFilter from "./components/RatingFilter";
-import Hero from "./components/Hero";
+import Hero from "./components/sections/Hero";
 import MoviesGrid from "./components/movie/MoviesGrid";
 import useMovies from "./hooks/useMovies";
 
