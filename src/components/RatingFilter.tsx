@@ -1,3 +1,5 @@
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Rating from "../types/Rating";
@@ -45,11 +47,16 @@ const Stars = styled.div`
   gap: 0.3em;
 `;
 
-const Star = styled.input<{ active: boolean }>`
+const Star = styled.button<{ active: boolean }>`
   width: 2.8rem;
   filter: ${(props) => (props.active ? "none" : "grayscale(80%)")};
   cursor: pointer;
   transition: 0.2s all ease;
+  background-color: transparent;
+  border: 0;
+  color: #ffc107;
+  font-size: 2.25rem;
+  padding: 0;
 
   &:focus {
     transform: scale(1.2);
@@ -86,12 +93,11 @@ const RatingFilter: FunctionComponent<RatingFilterProps> = ({
       <Stars>
         {RATING_OPTIONS.map((rating) => (
           <Star
-            type="image"
             onClick={() => handleClick(rating)}
-            src="/images/star.svg"
-            alt="Rating star"
             active={isRatingActive(rating)}
-          />
+          >
+            <FontAwesomeIcon icon={faStar}/>
+          </Star>
         ))}
       </Stars>
     </Wrapper>
