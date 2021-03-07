@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 import SearchInput from "../SearchInput";
+import Cover from "../../assets/hero-cover.jpg"
 
 const Wrapper = styled.div`
   position: relative;
@@ -20,7 +21,7 @@ const Wrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("https://cdn.hipwallpaper.com/i/13/88/5CZnUM.jpg");
+    background-image: url(${Cover});
     background-size: cover;
     background-position: center;
     filter: brightness(50%) contrast(80%);
