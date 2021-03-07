@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   color: white;
   flex-direction: column;
   margin-bottom: 2rem;
+  padding: 0 1.6rem;
 
   &::before {
     content: "";

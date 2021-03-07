@@ -7,7 +7,7 @@ const Wrapper = styled.header<{ floating: boolean }>`
   display: flex;
   justify-content: center;
   z-index: 90;
-  transition: .3s all ease;
+  transition: .3s background-color ease, .3s box-shadow ease;
 
   ${({ floating}) => floating && css`
     background-color: #bd4b3c;

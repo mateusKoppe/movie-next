@@ -16,15 +16,23 @@ interface MovieDetailModalProps {
 }
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 28rem auto;
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 645px) {
+    display: grid;
+    grid-template-columns: 28rem auto;
+    gap: 1.5rem;
+  }
 `;
 
 const Cover = styled.img`
   object-fit: cover;
   width: 100%;
   border-radius: 1.5rem;
+  max-width: 30rem;
+  margin: auto;
 `;
 
 const Stars = styled.div`

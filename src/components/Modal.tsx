@@ -38,8 +38,9 @@ const Backdrop = styled.div<ModalStyleProps>`
 const Content = styled.div<ModalStyleProps>`
   position: fixed;
   width: ${({ width }) => width}px;
-  max-height: 100vh;
+  max-height: calc(100vh - 3rem);
   overflow: hidden;
+  overflow-y: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%)

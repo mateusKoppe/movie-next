@@ -37,7 +37,7 @@ const Wrapper = styled.div`
   justify-content: end;
   align-items: center;
   gap: 0.5em;
-  padding: 0.3rem 0;
+  padding: 0.3rem 1.6rem;
 `;
 
 const Stars = styled.div`
