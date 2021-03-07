@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent } from "react";
 import styled from "styled-components";
 import SearchInput from "../SearchInput";
 
@@ -49,7 +49,7 @@ interface HeroProps {
 const Hero: FunctionComponent<HeroProps> = ({ onSearch, searchQuery }) => {
   return (
     <Wrapper>
-      <Title>Your Favorite movies. Explaneid.</Title>
+      <Title>Your Favorite movies. Explained.</Title>
       <SubTitle>Figure out what happened. Then find out why.</SubTitle>
       <SearchInput onSearch={onSearch} value={searchQuery} />
     </Wrapper>
