@@ -3,16 +3,12 @@ import Api from "../lib/Api";
 import Movie from "../types/Movie";
 import Rating from "../types/Rating";
 
-const API_KEY = "b2c89c46653f678014eee4a95e70925a";
-
 const useMovies = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [rating, setRating] = useState<Rating | null>(null);
 
   const loadMovies = async () => {
-    const response = await Api.get("/discover/movie", {
-      params: { api_key: API_KEY },
-    });
+    const response = await Api.get("/discover/movie");
     setMovies(response.data.results);
   };
 
@@ -26,9 +22,7 @@ const useMovies = () => {
       return;
     }
 
-    const response = await Api.get("/search/movie", {
-      params: { api_key: API_KEY, query },
-    });
+    const response = await Api.get("/search/movie");
     setMovies(response.data.results);
     setRating(null);
   };
@@ -41,7 +35,6 @@ const useMovies = () => {
     }
     const response = await Api.get("/discover/movie", {
       params: {
-        api_key: API_KEY,
         "vote_average.gte": rating.min,
         "vote_average.lte": rating.max,
       },
