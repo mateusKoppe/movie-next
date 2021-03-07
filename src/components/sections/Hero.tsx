@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import styled from "styled-components";
 import SearchInput from "../SearchInput";
 
@@ -43,14 +43,15 @@ const SubTitle = styled(Title)`
 
 interface HeroProps {
   onSearch: Function;
+  searchQuery: string | null;
 }
 
-const Hero: FunctionComponent<HeroProps> = ({ onSearch }) => {
+const Hero: FunctionComponent<HeroProps> = ({ onSearch, searchQuery }) => {
   return (
     <Wrapper>
       <Title>Your Favorite movies. Explaneid.</Title>
       <SubTitle>Figure out what happened. Then find out why.</SubTitle>
-      <SearchInput onSearch={onSearch} />
+      <SearchInput onSearch={onSearch} value={searchQuery} />
     </Wrapper>
   );
 };

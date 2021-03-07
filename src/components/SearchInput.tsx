@@ -1,4 +1,4 @@
-import { FormEvent, FunctionComponent, useState } from "react";
+import { FormEvent, FunctionComponent, useState, useEffect } from "react";
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -33,11 +33,18 @@ const Button = styled.button`
 `;
 
 interface SearchInputProps {
-  onSearch: Function
+  onSearch: Function;
+  value?: string | null;
 }
 
-const SearchInput: FunctionComponent<SearchInputProps> = ({ onSearch }) => {
+const SearchInput: FunctionComponent<SearchInputProps> = ({
+  onSearch,
+  value = "",
+}) => {
   const [search, setSearch] = useState<string>("");
+  useEffect(() => {
+    setSearch(value || "");
+  }, [value]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

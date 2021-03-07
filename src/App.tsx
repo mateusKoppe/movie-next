@@ -5,12 +5,12 @@ import MoviesGrid from "./components/movie/MoviesGrid";
 import useMovies from "./hooks/useMovies";
 
 function App() {
-  const { movies, searchMovies, rating, applyRating } = useMovies();
+  const { movies, searchQuery, applySearchQuery, rating, applyRating } = useMovies();
 
   return (
     <div>
       <AppHeader />
-      <Hero onSearch={searchMovies} />
+      <Hero onSearch={applySearchQuery} searchQuery={searchQuery} />
       <RatingFilter value={rating} onChange={applyRating} />
       <MoviesGrid list={movies} />
     </div>

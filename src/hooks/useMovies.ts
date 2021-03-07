@@ -6,6 +6,7 @@ import Rating from "../types/Rating";
 const useMovies = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [rating, setRating] = useState<Rating | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string | null>(null);
 
   const loadMovies = async () => {
     const response = await Api.get("/discover/movie");
@@ -16,15 +17,16 @@ const useMovies = () => {
     loadMovies();
   }, []);
 
-  const searchMovies = async (query: string) => {
+  const applySearchQuery = async (query: string) => {
     if (!query) {
       loadMovies();
       return;
     }
 
-    const response = await Api.get("/search/movie");
+    const response = await Api.get("/search/movie", { params: { query } });
     setMovies(response.data.results);
     setRating(null);
+    setSearchQuery(query);
   };
 
   const applyRating = async (rating: Rating) => {
@@ -39,10 +41,11 @@ const useMovies = () => {
         "vote_average.lte": rating.max,
       },
     });
+    setSearchQuery(null);
     setMovies(response.data.results);
   };
 
-  return { movies, searchMovies, rating, applyRating };
+  return { movies, searchQuery, applySearchQuery, rating, applyRating };
 };
 
 export default useMovies;
