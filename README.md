@@ -1,4 +1,6 @@
 # Movie Next
+Frontend programming challenge for developer candidates at Rockstar Coders 
+
 > Just a simple React App using the [The Movie DB API](https://developers.themoviedb.org/3/getting-started/introduction).
 
 ![Screenshot](docs/screenshot.png)
